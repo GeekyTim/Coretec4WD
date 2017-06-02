@@ -81,9 +81,9 @@ try:
             if event.code == "BTN_TL2":
                 if event.state == True:
                     print("Select")
-
                     x_axis = 0
                     y_axis = 0
+
             if event.code == "ABS_HAT0X":
                 if event.state == -1:
                     print("D pad Left")
@@ -92,13 +92,9 @@ try:
                     print("D pad Right")
 
             if event.code == "ABS_HAT0Y":
-
                 if event.state == -1:
-
                     print("D pad Up")
-
                 elif event.state == 1:
-
                     print("D pad Down")
 
             mixer_results = mixer(x_axis, y_axis)
