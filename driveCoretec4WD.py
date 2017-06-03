@@ -28,7 +28,7 @@ power_right = 0.0
 x_axis = 0.0
 y_axis = 0.0
 invert_y = False
-invert_x = True
+invert_x = False
 
 try:
     print('Press CTRL+C to quit')
