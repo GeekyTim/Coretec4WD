@@ -6,7 +6,8 @@
 from inputs import get_gamepad
 from explorerhat import motor
 
-def mixer(inYaw, inThrottle,):
+
+def mixer(inYaw, inThrottle, ):
     left = inThrottle + inYaw
     right = inThrottle - inYaw
     scaleLeft = abs(left / 125.0)
@@ -18,17 +19,19 @@ def mixer(inYaw, inThrottle,):
     results = [out_right, out_left]
     return results
 
+
 def constrain(val, min_val, max_val):
     return min(max_val, max(min_val, val))
 
+
 # Setup
-maxPower  = 1.0
+maxPower = 1.0
 power_left = 0.0
 power_right = 0.0
 x_axis = 0.0
 y_axis = 0.0
 invert_y = False
-invert_x = False
+invert_x = True
 
 try:
     print('Press CTRL+C to quit')
@@ -77,7 +80,7 @@ try:
 
             if event.code == "BTN_TL2":
                 if event.state == True:
-                    #print("Select")
+                    # print("Select")
                     x_axis = 0
                     y_axis = 0
 
@@ -94,10 +97,10 @@ try:
             #         print("D pad Down")
 
             mixer_results = mixer(x_axis, y_axis)
-            #print (mixer_results)
-            power_left = int((mixer_results[0] / 125.0)*100)
-            power_right = int((mixer_results[1] / 125.0)*100)
-            #print("left: " + str(power_left) + " right: " + str(power_right))
+            # print (mixer_results)
+            power_left = int((mixer_results[0] / 125.0) * 100)
+            power_right = int((mixer_results[1] / 125.0) * 100)
+            # print("left: " + str(power_left) + " right: " + str(power_right))
 
             motor.one.speed((-power_right * maxPower))
             motor.two.speed(power_left * maxPower)
